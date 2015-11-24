@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Title</title>
+</head>  
+    <body>
+        <ol>
+            {% for movie in movie_list %}
+                <li>{{ movie.title }}</li>
+            {% endfor %}
+        </ol>
+
+
+        <!-- Next/Prev page links  -->
+        {% if movie_list and movie_list.paginator.num_pages > 1 %}
+                <span class="step-links">
+                    {% if movie_list.has_previous %}
+                        <a href="?page={{ movie_list.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                        <span class="current">
+                            Page {{ movie_list.number }} of {{ movie_list.paginator.num_pages }}.
+                        </span>
+
+                    {% if movie_list.has_next %}
+                        <a href="?page={{ movie_list.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+        {% endif %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    </body>
+</html> 
